@@ -2,7 +2,7 @@
 -- TABLA: TORNEO
 -- =============================================
 CREATE TABLE TORNEO (
-    id_torneo    INT PRIMARY KEY,
+    id_torneo    SERIAL PRIMARY KEY,
     nombre       VARCHAR(100) NOT NULL,
     videojuego   VARCHAR(100) NOT NULL,
     fecha_inicio DATE         NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE INSCRIPCION (
 -- TABLA: PARTIDA
 -- =============================================
 CREATE TABLE PARTIDA (
-    id_partida INT       PRIMARY KEY,
+    id_partida SERIAL      PRIMARY KEY,
     id_torneo  INT          NOT NULL,
     equipo_A   VARCHAR(100) NOT NULL,
     equipo_B   VARCHAR(100) NOT NULL,
