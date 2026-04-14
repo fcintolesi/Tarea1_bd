@@ -7,7 +7,7 @@ CREATE TABLE TORNEO (
     videojuego   VARCHAR(100) NOT NULL,
     fecha_inicio DATE         NOT NULL,
     fecha_fin    DATE         NOT NULL,
-    prize_pool   INT NOT NULL DEFAULT 0 CHECK (prize_pool >= 0), -- en clp (no nesecario que sea decimal)
+    prize_pool   NUMERIC(12,2) NOT NULL DEFAULT 0 CHECK (prize_pool >= 0),
     max_equipos  INT          NOT NULL CHECK (max_equipos > 0),
     CONSTRAINT chk_fechas CHECK (fecha_fin >= fecha_inicio)
 );
