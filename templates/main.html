@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarea 1 - Torneo Gaming</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fb; color: #1a1a1a; }
+    header { background: #172554; color: white; padding: 18px 24px; }
+    main { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    nav button { padding: 10px 14px; border: none; background: #dbeafe; border-radius: 8px; cursor: pointer; }
+    nav button.active { background: #2563eb; color: white; }
+    .panel { display: none; background: white; padding: 18px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .panel.active { display: block; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; margin: 12px 0; }
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #e5e7eb; padding: 8px; text-align: left; }
+    th { background: #eff6ff; }
+    input, select, button { padding: 9px; border-radius: 8px; border: 1px solid #cbd5e1; }
+    .msg { margin-top: 10px; font-weight: bold; }
+    .error { color: #b91c1c; }
+    .success { color: #166534; }
+    h2, h3 { margin-top: 0; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Torneo Gaming - Aplicación Web</h1>
+  </header>
+  <main>
+    <nav>
+      <button data-panel="panel-torneos" class="active">Torneos</button>
+      <button data-panel="panel-estadisticas">Estadísticas</button>
+      <button data-panel="panel-busqueda">Búsqueda</button>
+      <button data-panel="panel-sponsors">Sponsors</button>
+      <button data-panel="panel-inscripcion">Inscripción</button>
+    </nav>
+
+    <section id="panel-torneos" class="panel active">
+      <h2>Torneos</h2>
+      <div class="row">
+        <select id="torneoSelect"></select>
+        <button id="btnCargarTorneo">Ver detalle</button>
+      </div>
+      <div id="listaTorneos"></div>
+      <div id="detalleTorneo"></div>
+    </section>
+
+    <section id="panel-estadisticas" class="panel">
+      <h2>Estadísticas de torneo</h2>
+      <div class="row">
+        <select id="statsTorneoSelect"></select>
+        <select id="statsEquipoSelect"></select>
+        <button id="btnCargarStats">Cargar estadísticas</button>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <h3>Ranking KOs / muertes</h3>
+          <div id="rankingStats"></div>
+        </div>
+        <div class="card">
+          <h3>Evolución por fase</h3>
+          <div id="equipoStats"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-busqueda" class="panel">
+      <h2>Búsqueda</h2>
+      <div class="row">
+        <input id="busquedaInput" type="text" placeholder="Gamertag, país o nombre de equipo" />
+        <button id="btnBuscar">Buscar</button>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <h3>Jugadores</h3>
+          <div id="resultadoJugadores"></div>
+        </div>
+        <div class="card">
+          <h3>Equipos</h3>
+          <div id="resultadoEquipos"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-sponsors" class="panel">
+      <h2>Sponsors por videojuego</h2>
+      <div class="row">
+        <select id="videojuegoSelect"></select>
+        <button id="btnSponsors">Buscar sponsors</button>
+      </div>
+      <div id="resultadoSponsors"></div>
+    </section>
+
+    <section id="panel-inscripcion" class="panel">
+      <h2>Formulario de inscripción</h2>
+      <div class="row">
+        <select id="inscripcionTorneoSelect"></select>
+        <select id="inscripcionEquipoSelect"></select>
+        <button id="btnInscribir">Inscribir equipo</button>
+      </div>
+      <div id="mensajeInscripcion" class="msg"></div>
+    </section>
+  </main>
+
+  <script src="/static/api.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
